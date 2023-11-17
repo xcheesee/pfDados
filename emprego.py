@@ -12,6 +12,7 @@ empregadosMes = pd.read_csv(folderPath+'empregados2012-2019.csv', sep=";")
 demissoesMes = pd.read_csv(folderPath+'demissoes2012-2019.csv', sep=";")
 #fonte https://www.ibge.gov.br/estatisticas/sociais/trabalho/9173-pesquisa-nacional-por-amostra-de-domicilios-continua-trimestral.html?=&t=series-historicas&utm_source=landing&utm_medium=explica&utm_campaign=desemprego
 desempregoBrQuarter = pd.read_csv(folderPath+'desempregoBrasil2012-2023.csv', sep=';')
+
 rendimentoMedioQuarter = pd.read_csv(folderPath+'rendimentoMedio2012-2021.csv', sep=";")
 txDesemprego = txDesempregoQuarter.filter(regex='T4$|Sigla').copy()
 rendimentoMedio = rendimentoMedioQuarter.filter(regex='T4$|Sigla').copy()
@@ -109,9 +110,9 @@ demissoesTotais = demissoesDf.T.sum(axis=0)
 #ano = 2016
 #pos = 0
 #for estado in txDesemprego.columns:
+#    plt.plot(txDesemprego.index, txDesemprego[estado], label=estado)
 #    if estado != 'SP' and estado != 'MG' and estado != 'RJ' and estado != 'PR' and estado != 'RS':
 #        continue
-#    plt.plot(txDesemprego.index, txDesemprego[estado], label=estado)
 #    plt.annotate(estado, xy=(4, txDesemprego[estado][str(ano)]), xytext=(4, txDesemprego[estado][str(ano)] + 0.1))
 #plt.title('Taxa de Desemprego')
 #plt.ylabel('Porcentagem')
@@ -138,5 +139,5 @@ demissoesTotais = demissoesDf.T.sum(axis=0)
 #plt.xlabel('Ano')
 #plt.legend(title='Estado')
 #
-#plt.show()
+plt.show()
 #plt.savefig('contratados-estado.png')
