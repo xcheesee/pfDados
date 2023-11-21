@@ -6,7 +6,7 @@ import numpy as np
 def flatten(lista):
     return [item for sublist in lista  for item in sublist]
 #dados 2012-2019
-folderPath = 'C:\\Users\\lucas\\repos\\pfDados\\emprego\\'
+folderPath = 'C:\\Users\\x529427\\Documents\\Repos\\pfDados\\emprego\\'
 txDesempregoQuarter = pd.read_csv(folderPath+'taxaDesemprego2012-2021.csv', sep=";", decimal=',')
 empregadosMes = pd.read_csv(folderPath+'empregados2012-2019.csv', sep=";")
 demissoesMes = pd.read_csv(folderPath+'demissoes2012-2019.csv', sep=";")
@@ -16,6 +16,8 @@ desempregoBrQuarter = pd.read_csv(folderPath+'desempregoBrasil2012-2023.csv', se
 rendimentoMedioQuarter = pd.read_csv(folderPath+'rendimentoMedio2012-2021.csv', sep=";")
 txDesemprego = txDesempregoQuarter.filter(regex='T4$|Sigla').copy()
 rendimentoMedio = rendimentoMedioQuarter.filter(regex='T4$|Sigla').copy()
+txDesemprego = txDesemprego.drop(columns=['2012 T4', '2021 T4', '2020 T4'])
+print(txDesemprego)
 empregados = {
     'Estado': empregadosMes['Sigla'],
     #'2012': empregadosMes.filter(regex='^2012').sum(axis=1),
@@ -70,9 +72,9 @@ demissoesTotais = demissoesDf.T.sum(axis=0)
 #ano = 2016
 #pos = 0
 #for estado in empregadosDf.columns:
-#    plt.plot(empregadosDf.index, empregadosDf[estado], label=estado)
-#    if empregadosDf[estado][str(ano)] < 1000000:
+#    if estado != 'MG':
 #        continue
+#    plt.plot(empregadosDf.index, empregadosDf[estado], label=estado)
 #    plt.annotate(estado, xy=(3, empregadosDf[estado][str(ano)]), xytext=(3, empregadosDf[estado][str(ano)] + 50000))
 #plt.title('Pessoas contratadas no Ano(formal/informal)')
 #plt.ylabel('Pessoas(Milhao)')
@@ -107,17 +109,17 @@ demissoesTotais = demissoesDf.T.sum(axis=0)
 #plt.ylabel("Nro. Pessoas(Dez. Milhoes)")
 
 #TAXA DESEMPREGO LINE CHART
-#ano = 2016
-#pos = 0
-#for estado in txDesemprego.columns:
-#    plt.plot(txDesemprego.index, txDesemprego[estado], label=estado)
-#    if estado != 'SP' and estado != 'MG' and estado != 'RJ' and estado != 'PR' and estado != 'RS':
-#        continue
-#    plt.annotate(estado, xy=(4, txDesemprego[estado][str(ano)]), xytext=(4, txDesemprego[estado][str(ano)] + 0.1))
-#plt.title('Taxa de Desemprego')
-#plt.ylabel('Porcentagem')
-#plt.xlabel('Ano')
-#plt.legend(title="Estado")
+ano = 2016
+pos = 0
+for estado in txDesemprego.columns:
+    if estado != 'PA':
+        continue
+    plt.plot(txDesemprego.index, txDesemprego[estado], label=estado)
+    plt.annotate(estado, xy=(4, txDesemprego[estado][str(ano)]), xytext=(4, txDesemprego[estado][str(ano)] + 0.1))
+plt.title('Taxa de Desemprego')
+plt.ylabel('Porcentagem')
+plt.xlabel('Ano')
+plt.legend(title="Estado")
 
 #TAXA DESEMPREGO BOXPLOT
 #plt.boxplot(txDesempregoBrAnoDf)
