@@ -8,10 +8,10 @@ latTx = pd.read_excel(folderPath+'lt-tx-cmil-vit.xlsx', index_col=0, header=0).T
 trafTx = pd.read_excel(folderPath+'tr-tx-cmil-oc.xlsx', index_col=0, header=0).T
 latAb = pd.read_excel(folderPath+'lt-ab-vit.xlsx', index_col=0, header=0).T
 trafAb = pd.read_excel(folderPath+'tr-ab-oc.xlsx', index_col=0, header=0).T
+homAb = pd.read_csv(folderPath+'homicidio2013-2019.csv', index_col=0, sep=';', header=0)
 
 latBr = latAb.sum(axis=1)
 trafBr = trafAb.sum(axis=1)
-print(trafBr)
 
 #FAZER GRAFICO DE PIZZA SOBRE TIPO DE CRIME RELACIONADO A UM BREAKPOINT DE OUTRO DADO
 
@@ -79,4 +79,17 @@ print(trafBr)
 #plt.xlabel('Ano')
 #plt.legend(title="Estado")
 
-plt.show()
+#plt.show()
+
+#MEDIAS CRIME BR/ANO
+mediaLat = latAb.T.mean()
+mediaLatTx = latTx.T.mean()
+varLatTx = latTx.T.var()
+desvioLatTx = latTx.T.std()
+
+mediaHom = homAb.mean()
+
+mediaTraf = trafAb.T.mean()
+mediaTrafTx = trafTx.T.mean()
+varTrafTx = trafTx.T.var()
+desvioTrafTx = trafTx.T.std()
