@@ -29,30 +29,33 @@ for uf in homTx.columns:
 #FAZER GRAFICO DE PIZZA SOBRE TIPO DE CRIME RELACIONADO A UM BREAKPOINT DE OUTRO DADO
 
 #TAXA LATROCINIO 100MIL HAB
-#ano = 2016
-#pos = 0
-#for estado in latTx.columns:
-#    plt.plot(latTx.index, latTx[estado], label=estado)
-#    if estado != 'SP' and estado != 'MG' and estado != 'RJ' and estado != 'PR' and estado != 'RS':
-#        continue
-#    plt.annotate(estado, xy=(2016, latTx[estado][ano]), xytext=(2016, latTx[estado][ano] + 0.05))
-#plt.title('Latrocinio/Taxa por 100 mil Habitantes')
-#plt.ylabel('Taxa')
-#plt.xlabel('Ano')
-#plt.legend(title="Estado")
+ano = 2016
+pos = 0
+for estado in latTx.columns:
+    #if estado != 'SP' and estado != 'PA' and estado != 'RR' and estado != 'PR' and estado != 'RS' and estado != 'MG' and estado != 'RJ':
+    #    continue
+    plt.plot(latTx.index, latTx[estado], label=estado)
+    print(f'{estado}: {latTx[estado].sum()/7}')
+    plt.annotate(estado, xy=(2016, latTx[estado][ano]), xytext=(2016, latTx[estado][ano] + 0.05))
+plt.title('Grafico 11 -- Latrocinio/Taxa por 100 mil Habitantes')
+plt.ylabel('Taxa')
+plt.xlabel('Ano')
+plt.legend(title="Estado")
+#plt.show()
 
 #LATROCINIO ABSOLUTO
 #ano = 2016
 #pos = 0
 #for estado in latAb.columns:
-#    plt.plot(latAb.index, latAb[estado], label=estado)
-#    if estado != 'SP' and estado != 'MG' and estado != 'RJ' and estado != 'PR' and estado != 'RS':
+#    if estado != 'SP' and estado != 'PA' and estado != 'RR' and estado != 'PR' and estado != 'RS' and estado != 'MG' and estado != 'RJ':
 #        continue
+#    plt.plot(latAb.index, latAb[estado], label=estado)
 #    plt.annotate(estado, xy=(2016, latAb[estado][ano]), xytext=(2016, latAb[estado][ano] + 0.05))
-#plt.title('Latrocinio/Numeros Absolutos')
+#plt.title('Grafico 12 -- Latrocinio/Numeros Absolutos')
 #plt.ylabel('Nro.')
 #plt.xlabel('Ano')
 #plt.legend(title="Estado")
+#plt.show()
 
 #HOMICIDIO ABSOLUTO
 #ano = 2016
@@ -68,18 +71,18 @@ for uf in homTx.columns:
 #plt.legend(title="Estado")
 
 #HOMICIDIO TAXA
-ano = 2016
-pos = 0
-for estado in homTx.columns:
-    plt.plot(homTx.index, homTx[estado], label=estado)
-    if estado != 'SP' and estado != 'MG' and estado != 'RJ' and estado != 'PR' and estado != 'RS':
-        continue
-    plt.annotate(estado, xy=(3, homTx[estado][str(ano)]), xytext=(3, homTx[estado][str(ano)]))
-plt.title('Homicidios/Ocorrencia por 100mil Hab.')
-plt.ylabel('Nro.')
-plt.xlabel('Ano')
-plt.legend(title="Estado")
-plt.show()
+#ano = 2016
+#pos = 0
+#for estado in homTx.columns:
+#    plt.plot(homTx.index, homTx[estado], label=estado)
+#    if estado != 'SP' and estado != 'MG' and estado != 'RJ' and estado != 'PR' and estado != 'RS':
+#        continue
+#    plt.annotate(estado, xy=(3, homTx[estado][str(ano)]), xytext=(3, homTx[estado][str(ano)]))
+#plt.title('Homicidios/Ocorrencia por 100mil Hab.')
+#plt.ylabel('Nro.')
+#plt.xlabel('Ano')
+#plt.legend(title="Estado")
+#plt.show()
 
 #HOMICIDIO BR TOTAL
 #plt.bar(homBr.index, homBr.values)
@@ -120,9 +123,10 @@ plt.show()
 
 #LATROCINIO BR TOTAL
 #plt.bar(latBr.index, latBr.values)
-#plt.title('Latrocinios/Nacional')
+#plt.title('Grafico 9 -- Latrocinios/Nacional')
 #plt.ylabel('Nro.')
 #plt.xlabel('Ano')
+#plt.show()
 
 #TRAFICO ABSOLUTO
 #ano = 2016
@@ -132,39 +136,41 @@ plt.show()
 #        continue
 #    plt.plot(trafAb.index, trafAb[estado], label=estado)
 #    plt.annotate(estado, xy=(2016, trafAb[estado][ano]), xytext=(2016, trafAb[estado][ano] + 0.05))
-#plt.title('Trafico de Drogas/Numeros Absolutos')
+#plt.title('Grafico 4 -- Trafico de Drogas/Numeros Absolutos')
 #plt.ylabel('Nro.')
 #plt.xlabel('Ano')
 #plt.legend(title="Estado")
+#plt.show()
 
 #TRAFICO BR TOTAL
 #plt.bar(trafBr.index, trafBr.values)
-#plt.title('Trafico/Nacional')
+#plt.title('Grafico 1 -- Trafico/Nacional')
 #plt.ylabel('Nro.')
 #plt.xlabel('Ano')
+#plt.show()
 
 #TRAFICO TAXA
 #ano = 2016
 #pos = 0
 #for estado in trafTx.columns:
-#    if estado != 'SP' and estado != 'MG' and estado != 'RJ' and estado != 'PR' and estado != 'RS':
-#        continue
+#    #if estado != 'SC' and estado != 'SP':
+#    #    continue
+#    print(f'{estado}: {trafTx[estado].sum()/7}')
 #    plt.plot(trafTx.index, trafTx[estado], label=estado)
 #    plt.annotate(estado, xy=(2016, trafTx[estado][ano]), xytext=(2016, trafTx[estado][ano] + 0.05))
-#plt.title('Trafico de Drogas/Taxa por 100Mil Habitantes')
+#plt.title('Grafico 3 -- Trafico de Drogas/Taxa por 100Mil Habitantes')
 #plt.ylabel('Taxa')
 #plt.xlabel('Ano')
 #plt.legend(title="Estado")
-
 #plt.show()
 
 #MEDIAS CRIME BR/ANO (sem outliers)
-latTX = latTx.drop(columns=['PA', 'RR'])
-mediaLat = latAb.T.mean()
-mediaLatTx = latTx.T.mean()
-varLatTx = latTx.T.var()
-desvioLatTx = latTx.T.std()
-cvLatTx = desvioLatTx/mediaLatTx
+#latTX = latTx.drop(columns=['PA', 'RR'])
+#mediaLat = latAb.T.mean()
+#mediaLatTx = latTx.T.mean()
+#varLatTx = latTx.T.var()
+#desvioLatTx = latTx.T.std()
+#cvLatTx = desvioLatTx/mediaLatTx
 
 
 mediaHom = homAb.mean()
@@ -177,20 +183,20 @@ desvioTrafTx = trafTx.T.std()
 cvTrafTx = desvioTrafTx/mediaTrafTx
 
 #HISTOGRAMA TAXA latrocinio TOTAL 2013/2019
-#crimeTxTotal = []
-#for ano in latTx.index:
-#    crimeTxTotal.extend(latTx.loc[ano].values.tolist())
-#plt.hist(crimeTxTotal)
-#plt.title('Taxa de Latrocinio / 2013-2019')
-#plt.ylabel('Taxa por 100mil Hab.')
-#plt.show()
+crimeTxTotal = []
+for ano in latTx.index:
+    crimeTxTotal.extend(latTx.loc[ano].values.tolist())
+plt.hist(crimeTxTotal)
+plt.title('Grafico 10 -- Taxa de Latrocinio / 2013-2019')
+plt.ylabel('Taxa por 100mil Hab.')
+plt.show()
 
 #HISTOGRAMA TAXA trafico TOTAL 2013/2019
 #crimeTxTotal = []
 #for ano in trafTx.index:
 #    crimeTxTotal.extend(trafTx.loc[ano].values.tolist())
 #plt.hist(crimeTxTotal)
-#plt.title('Taxa de Trafico de Drogas / 2013-2019')
+#plt.title(' Grafico 2 -- Taxa de Trafico de Drogas / 2013-2019')
 #plt.ylabel('Taxa por 100mil Hab.')
 #plt.show()
 

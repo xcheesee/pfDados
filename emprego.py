@@ -112,14 +112,15 @@ demissoesTotais = demissoesDf.T.sum(axis=0)
 ano = 2016
 pos = 0
 for estado in txDesemprego.columns:
-    if estado != 'PA':
-        continue
     plt.plot(txDesemprego.index, txDesemprego[estado], label=estado)
+    if estado != 'SP':
+        continue
     plt.annotate(estado, xy=(4, txDesemprego[estado][str(ano)]), xytext=(4, txDesemprego[estado][str(ano)] + 0.1))
-plt.title('Taxa de Desemprego')
+plt.title('Grafico 16 -- Taxa de Desemprego')
 plt.ylabel('Porcentagem')
 plt.xlabel('Ano')
 plt.legend(title="Estado")
+plt.show()
 
 #TAXA DESEMPREGO BOXPLOT
 #plt.boxplot(txDesempregoBrAnoDf)

@@ -31,13 +31,13 @@ for uf in homicidios_data.index:
     if uf == 'SP':
         correlacao_pearson = pd.Series(x).corr(pd.Series(y))
         a, b = np.polyfit(x, y, 1)
-        pltTitle.append(f"{uf}: " + "y=%.2fx+%.2f "%(a,b) + f"R²={correlacao_pearson**2}")
+        pltTitle.append(f"{uf}: " + "y=%.2fx+%.2f "%(a,b) + f"R²={correlacao_pearson**2:.2f}")
         plt.scatter(x=x, y=y, label=f'{uf} - Corr: {correlacao_pearson:.2f}')
         sns.regplot(x=x, y=y)
 
 plt.xlabel('Taxa de Latrocinios')
 plt.ylabel('Taxa de Desemprego')
-plt.suptitle('Relação entre Latrocinio e Taxa de Desemprego(por Estado)')
+plt.suptitle('Grafico 17 -- Relação entre Latrocinio e Taxa de Desemprego(por Estado)')
 plt.title('\n'.join(pltTitle))
 
 plt.legend()
@@ -103,16 +103,16 @@ plt.show()
 #for uf in homicidios_data.index:
 #    y = homicidios_data.loc[uf].values.astype(float)
 #    x = txDesemprego_data.loc[uf].values
-#    if uf == 'MG' or uf == 'ES':
+#    if uf == 'SP':
 #        correlacao_pearson = pd.Series(x).corr(pd.Series(y))
 #        a, b = np.polyfit(x, y, 1)
-#        pltTitle.append(f"{uf}: " + "y=%.2fx+%.2f "%(a,b) + f"R²={correlacao_pearson**2}")
+#        pltTitle.append(f"{uf}: " + "y=%.2fx+%.2f "%(a,b) + f"R²={correlacao_pearson**2:.2f}")
 #        plt.scatter(x=x, y=y, label=f'{uf} - Corr: {correlacao_pearson:.2f}')
 #        sns.regplot(x=x, y=y)
 #
 #plt.ylabel('Taxa de Trafico de Drogas/Ocorrencias por 100mil Hab.')
 #plt.xlabel('Taxa de Desemprego')
-#plt.suptitle('Relação entre Taxa de Trafico de Drogas e Desemprego(por Estado)')
+#plt.suptitle('Grafico 7 -- Relação entre Taxa de Trafico de Drogas e Desemprego(por Estado)')
 #plt.title('\n'.join(pltTitle))
 #
 #plt.legend()

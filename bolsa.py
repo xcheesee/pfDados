@@ -41,28 +41,28 @@ bolsaPessoasTotal = bolsaPessoas.sum(axis=0)
 #plt.show()
 
 #PESSOAS BOLSA
-ano=2016
-for estado in bolsaPessoas.index:
-    plt.plot(bolsaPessoas.columns, bolsaPessoas.loc[estado], label=estado)
-    if estado != 'SP' and estado != 'MG' and estado != 'RJ' and estado != 'PR' and estado != 'RS':
-        continue
-    plt.annotate(estado, xy=(3, bolsaPessoas.loc[estado][str(ano)]), xytext=(3, bolsaPessoas.loc[estado][str(ano)]))
-plt.title('Verba Gasta com Bolsa Familia/Estado')
-plt.legend(title="Estado")
-plt.xlabel('Ano')
-plt.ylabel('R$(Dez.Milhao)')
-plt.show()
+#ano=2016
+#for estado in bolsaPessoas.index:
+#    plt.plot(bolsaPessoas.columns, bolsaPessoas.loc[estado], label=estado)
+#    if estado != 'SP' and estado != 'MG' and estado != 'RJ' and estado != 'PR' and estado != 'RS':
+#        continue
+#    plt.annotate(estado, xy=(3, bolsaPessoas.loc[estado][str(ano)]), xytext=(3, bolsaPessoas.loc[estado][str(ano)]))
+#plt.title('Verba Gasta com Bolsa Familia/Estado')
+#plt.legend(title="Estado")
+#plt.xlabel('Ano')
+#plt.ylabel('R$(Dez.Milhao)')
+#plt.show()
 
 #VERBA BOLSA BR
-#plt.bar(bolsaTotal.index, bolsaTotal.values)
-#plt.title('Verba Gasta em Bolsa Familia/Brasil')
-#plt.xlabel('Ano')
-#plt.ylabel('R$(Dez.Milhoes)')
-#plt.show()
+plt.bar(bolsaTotal.index, bolsaTotal.values)
+plt.title('Grafico 14 -- Verba Gasta em Bolsa Familia/Brasil')
+plt.xlabel('Ano')
+plt.ylabel('R$(Dez.Milhoes)')
+plt.show()
 
 #PESSOAS BOLSA BR
-#plt.bar(bolsaPessoasTotal.index, bolsaPessoasTotal.values)
-#plt.title('Pessoas Beneficiadas pelo Bolsa Familia/Brasil')
-#plt.xlabel('Ano')
-#plt.ylabel('Pessoas(Milhao)')
-#plt.show()
+plt.bar(bolsaPessoasTotal.index, bolsaPessoasTotal.values)
+plt.title('Grafico 15 -- Pessoas Beneficiadas pelo Bolsa Familia/Brasil')
+plt.xlabel('Ano')
+plt.ylabel('Pessoas(Milhao)')
+plt.show()
